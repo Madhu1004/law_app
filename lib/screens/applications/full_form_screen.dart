@@ -76,7 +76,7 @@ class _FullFormDetailsScreenState extends State<FullFormDetailsScreen> {
               return ListTile(
                 title: Text(
                   'Document ${index + 1}:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 subtitle: filePath.isNotEmpty
                     ? filePath.endsWith('.pdf')

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 import 'package:law_app/reusable_widgets/reusable_widgets.dart';
 
 import '../../utils/constants/sizes.dart';
@@ -31,8 +32,10 @@ class _ApplicationsSubmittedState extends State<ApplicationsSubmitted> {
     return FirebaseFirestore.instance
         .collection('applications')
         .where('Email', isEqualTo: currentUserEmail)
+        .orderBy('Timestamp', descending: true) // Order by submission date
         .snapshots();
   }
+
 
   void _viewForm(DocumentSnapshot formSnapshot) {
     // Navigate to the form details screen
@@ -89,9 +92,16 @@ class _ApplicationsSubmittedState extends State<ApplicationsSubmitted> {
                   itemBuilder: (context, index) {
                     final form = forms[index];
                     return ListTile(
+
                       title: Text(form['Category']),
-                      subtitle:
-                      Text('Submitted by: ${form['Email'].toString()}'),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Submitted by: ${form['Email'].toString()}'),
+
+                          Text('Date: ${DateFormat('yyyy-MM-dd').format((form['Timestamp'] as Timestamp).toDate())}'),
+                        ],
+                      ),
                       onTap: () {
                         _viewForm(form);
                       },
