@@ -81,7 +81,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
         fileUrls.add(fileUrl);
       }
 
-      // Combine file URLs into a single string separated by a delimiter
+
       String combinedUrls = fileUrls.join(';');
 
       await _firestore.collection('applications').add({
@@ -101,9 +101,9 @@ class _ApplicationFormState extends State<ApplicationForm> {
         _filePaths = null;
       });
 
-      // Show success message
+
     } catch (e) {
-      // Show error message
+
     }
   }
 
@@ -125,7 +125,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
     if (await Permission.storage.request().isGranted) {
       _selectFiles();
     } else {
-      // Handle permission denied
+
     }
   }
 

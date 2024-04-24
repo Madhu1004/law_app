@@ -5,7 +5,6 @@ import '../utils/constants/colors.dart';
 import '../utils/constants/enums.dart';
 import '../utils/constants/sizes.dart';
 
-
 class TGridViewItems extends StatelessWidget {
   const TGridViewItems({
     super.key,
@@ -14,7 +13,7 @@ class TGridViewItems extends StatelessWidget {
   Future<List<Map<String, dynamic>>> fetchDataFromFirebase() async {
     try {
       final QuerySnapshot<Map<String, dynamic>> snapshot =
-      await FirebaseFirestore.instance.collection('Services').get();
+          await FirebaseFirestore.instance.collection('Services').get();
 
       return snapshot.docs.map((doc) {
         return {
@@ -34,11 +33,10 @@ class TGridViewItems extends StatelessWidget {
       future: fetchDataFromFirebase(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator(); // Show loading indicator while fetching data
+          return const CircularProgressIndicator();
         } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}'); // Show error message if data fetch fails
+          return Text('Error: ${snapshot.error}');
         } else {
-          // Data fetched successfully, build grid with fetched items
           return TGridLayout(
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
@@ -91,17 +89,17 @@ class TServicesCardVertical extends StatelessWidget {
   final String description;
 
   const TServicesCardVertical({
-    super.key, // Adding Key? key parameter
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.description,
-  }); // Passing the key to the super constructor
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _showCardDetails(context); // Call function to show details on tap
+        _showCardDetails(context);
       },
       child: Container(
         width: 180,
@@ -121,13 +119,13 @@ class TServicesCardVertical extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CachedNetworkImage( // Using CachedNetworkImage instead of Image.network
+            CachedNetworkImage(
               imageUrl: imageUrl,
               width: double.infinity,
               height: 110,
               fit: BoxFit.contain,
-              placeholder: (context, url) => const CircularProgressIndicator(), // Placeholder widget while loading
-              errorWidget: (context, url, error) => const Icon(Icons.error), // Widget to display in case of error
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             const SizedBox(height: 8),
             Text(
@@ -153,7 +151,6 @@ class TServicesCardVertical extends StatelessWidget {
     );
   }
 
-  // Function to show card details in a dialog
   void _showCardDetails(BuildContext context) {
     showDialog(
       context: context,
@@ -164,14 +161,13 @@ class TServicesCardVertical extends StatelessWidget {
             child: ListBody(
               children: <Widget>[
                 Text(description),
-                // You can add more details here if needed
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
+                Navigator.of(context).pop();
               },
               child: const Text('Close'),
             ),
@@ -181,8 +177,6 @@ class TServicesCardVertical extends StatelessWidget {
     );
   }
 }
-
-
 
 class TServiceTitleText extends StatelessWidget {
   const TServiceTitleText({
@@ -209,12 +203,11 @@ class TServiceTitleText extends StatelessWidget {
       style: brandTextSizes == TextSizes.small
           ? Theme.of(context).textTheme.labelMedium!.apply(color: color)
           : brandTextSizes == TextSizes.medium
-          ? Theme.of(context).textTheme.bodyLarge!.apply(color: color)
-          : Theme.of(context).textTheme.bodyMedium!.apply(color: color),
+              ? Theme.of(context).textTheme.bodyLarge!.apply(color: color)
+              : Theme.of(context).textTheme.bodyMedium!.apply(color: color),
       overflow: TextOverflow.ellipsis,
       maxLines: maxLines,
       textAlign: textAlign,
     );
   }
 }
-

@@ -164,8 +164,8 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
   Widget _buildServiceTile(BuildContext context, Service service) {
     return ListTile(
       leading: SizedBox(
-        width: 48, // Adjust the width according to your preference
-        height: 48, // Adjust the height according to your preference
+        width: 48,
+        height: 48,
         child: CachedNetworkImage(
           imageUrl: service.iconUrl,
           placeholder: (context, url) => const CircularProgressIndicator(), // Placeholder image

@@ -22,7 +22,6 @@ class _FullFormDetailsScreenState extends State<FullFormDetailsScreen> {
   @override
   void initState() {
     super.initState();
-    // Initialize _filePaths with the document URLs if they exist, otherwise set it to an empty list
     _filePaths = (widget.form.data() as Map<String, dynamic>).containsKey('DocumentUrls')
         ? (widget.form['DocumentUrls'] as String).split(';')
         : [];
@@ -309,7 +308,7 @@ class _EditFormScreenState extends State<EditFormScreen> {
         'DocumentUrls': _filePath , // Update document URLs
       });
 
-      // Navigate back to the form details screen
+
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -328,7 +327,7 @@ class _EditFormScreenState extends State<EditFormScreen> {
           );
         },
       );
-      // Show confirmation message or perform additional actions if needed
+
     } catch (e) {
       // Handle error
       if (kDebugMode) {

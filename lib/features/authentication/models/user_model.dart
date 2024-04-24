@@ -86,8 +86,7 @@ class UserModel {
           // gender: data['Gender']??'',
         );
       } else {
-        // Handle the case where the document doesn't exist or data is malformed
-        // You might return a default UserModel instance or throw an exception
+
         return UserModel.empty();
       }
     }
