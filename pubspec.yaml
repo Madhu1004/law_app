@@ -1,0 +1,119 @@
+name: law_app
+description: "A new Flutter project."
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.1 <4.0.0'
+
+#-----------------packages-------------------#
+dependencies:
+  flutter:
+    sdk: flutter
+
+ #utility packages
+  http: ^1.1.0
+  intl: ^0.18.1
+  logger: ^2.0.1
+  url_launcher: ^6.1.12
+  lottie: ^3.1.0
+  flare_flutter: ^3.0.0
+  shimmer: ^3.0.0
+  flutter_native_splash: ^2.3.2
+  connectivity_plus: ^5.0.1
+  smooth_page_indicator: ^1.1.0
+  carousel_slider: ^4.2.1
+  image_picker: ^1.0.7
+  file_picker: ^4.0.0
+  shared_preferences: ^2.2.2
+  permission_handler: ^10.2.0
+  flutter_pdfview: ^1.0.3
+
+ #icons
+  iconsax: ^0.0.8
+  cupertino_icons: ^1.0.6
+
+  #state Management
+  get: ^4.6.5
+  get_storage: ^2.1.1
+
+  #fireBase
+  firebase_core: ^2.27.1
+  firebase_auth : ^4.14.0
+  cloud_firestore: ^4.13.1
+  google_sign_in: ^6.2.1
+  firebase_storage: ^11.6.11
+  cached_network_image: ^3.3.1
+
+
+
+  #product specific:
+
+
+#----------------- ./ packages end-------------------#
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+
+
+
+
+flutter:
+  uses-material-design: true
+
+  #---------------Local assets-----------#
+  assets:
+    - assets/logos/
+    - assets/images/
+    - assets/images/on_boarding_images/
+    - assets/icons/
+  
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 800
+        - asset: assets/fonts/Poppins-BoldItalic.ttf
+          weight: 800
+        - asset: assets/fonts/Poppins-Italic.ttf
+          weight: 700
+        - asset:  assets/fonts/Poppins-MediumItalic.ttf
+          weight: 700
+        - asset:  assets/fonts/Poppins-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-SemiBoldItalic.ttf
+          weight: 600
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
