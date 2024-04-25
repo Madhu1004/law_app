@@ -10,7 +10,7 @@ import 'application_submitted.dart';
 class FullFormDetailsScreen extends StatefulWidget {
   final DocumentSnapshot form;
 
-  const FullFormDetailsScreen({Key? key, required this.form}) : super(key: key);
+  const FullFormDetailsScreen({super.key, required this.form});
 
   @override
   _FullFormDetailsScreenState createState() => _FullFormDetailsScreenState();
@@ -97,7 +97,7 @@ class _FullFormDetailsScreenState extends State<FullFormDetailsScreen> {
                       onPressed: () {
                         _launchURL(filePath);
                       },
-                      child: const Text('--------> Click to view'),
+                      child: const Text('View'),
                     ),
                   ],
                 )
@@ -126,10 +126,10 @@ class _FullFormDetailsScreenState extends State<FullFormDetailsScreen> {
             tooltip: 'Edit',
             child: const Icon(Icons.edit),
           ),
-          const SizedBox(width: 16), // Adjust spacing between buttons
+          const SizedBox(width: 16),
           FloatingActionButton(
             onPressed: () {
-              // Handle withdrawal action here
+
               withdrawForm(context, widget.form.reference);
             },
             tooltip: 'Withdraw',
