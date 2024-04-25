@@ -38,7 +38,6 @@ class HomeScreen extends StatelessWidget {
                           textColor: TColors.white,
                         ),
                         const SizedBox(height: TSizes.spaceBtwItems),
-                        // Pass snapshot to THomeServices
                         FutureBuilder<List<PopularService>>(
                           future: FirebaseService().fetchPopularServices(),
                           builder: (context, snapshot) {
