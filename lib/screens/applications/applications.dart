@@ -20,14 +20,14 @@ class Service {
   });
 }
 
-class ApplicationScreen extends StatefulWidget {
-  const ApplicationScreen({super.key});
+class ServiceScreen extends StatefulWidget {
+  const ServiceScreen({super.key});
 
   @override
-  _ApplicationScreenState createState() => _ApplicationScreenState();
+  _ServiceScreenState createState() => _ServiceScreenState();
 }
 
-class _ApplicationScreenState extends State<ApplicationScreen> {
+class _ServiceScreenState extends State<ServiceScreen> {
   late List<Service> allServices;
   List<Service> displayedServices = [];
 
@@ -103,7 +103,7 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
                 children: [
                   TAppBar(
                     title: Text(
-                      'Application',
+                      'Services',
                       style: Theme.of(context)
                           .textTheme
                           .headlineMedium
@@ -119,24 +119,6 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  TSearchContainer(
-                    text: 'Search services...',
-                    icon: Icons.search,
-                    onSearch: _searchServices,
-                  ),
-                  const SizedBox(height: TSizes.spaceBtwItems),
-                  const TSectionHeading(
-                    title: 'Services',
-                    showActionButton: false,
-                  ),
-
-                  const SizedBox(height: TSizes.spaceBtwItems),
-                  Column(
-                    children: displayedServices
-                        .map((service) => _buildServiceTile(context, service))
-                        .toList(),
-                  ),
-                  const SizedBox(height: TSizes.spaceBetweenSections),
                   const TSectionHeading(
                     title: 'Apply for service',
                     showActionButton: false,
@@ -152,6 +134,24 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: TSizes.spaceBetweenSections),
+                  const TSectionHeading(
+                    title: 'Services',
+                    showActionButton: false,
+                  ),
+                  const SizedBox(height: TSizes.spaceBtwItems),
+                  TSearchContainer(
+                    text: 'Search services...',
+                    icon: Icons.search,
+                    onSearch: _searchServices,
+                  ),
+                  const SizedBox(height: TSizes.spaceBtwItems),
+                  Column(
+                    children: displayedServices
+                        .map((service) => _buildServiceTile(context, service))
+                        .toList(),
+                  ),
+
                 ],
               ),
             ),

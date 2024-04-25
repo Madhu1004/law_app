@@ -30,7 +30,7 @@ class NavigationMenu extends StatelessWidget {
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
             NavigationDestination(
-                icon: Icon(Iconsax.document), label: 'Applications'),
+                icon: Icon(Iconsax.document), label: 'Services'),
             NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
           ],
         ),
@@ -45,7 +45,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    const ApplicationScreen(),
+    const ServiceScreen(),
     const SettingsScreen(),
   ];
 }

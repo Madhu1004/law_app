@@ -51,6 +51,7 @@ class HomeScreen extends StatelessWidget {
                             }
                           },
                         ),
+
                       ],
                     ),
                   ),
@@ -68,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   TSectionHeading(
                     title: 'Our Services',
-                    onPressed: () => Get.to(() => const ApplicationScreen()),
+                    onPressed: () => Get.to(() => const ServiceScreen()),
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   const TGridViewItems(),
@@ -155,11 +156,17 @@ Future<List<String>> fetchImagesFromFolder(String folderPath) async {
 class PopularService {
   final String imageUrl;
   final String title;
+  final String description;
 
   PopularService({
     required this.imageUrl,
     required this.title,
+    required this.description,
   });
+
+  void onTap(BuildContext context) {
+    FirebaseService().openDescription(context, description);
+  }
 }
 
 class FirebaseService {
@@ -174,13 +181,35 @@ class FirebaseService {
         return PopularService(
           imageUrl: doc['imageUrl'],
           title: doc['title'],
+          description: doc['description'],
         );
       }).toList();
     } catch (e) {
       throw Exception('Failed to fetch popular services: $e');
     }
   }
+
+  void openDescription(BuildContext context, String description) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Description'),
+          content: Text(description),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
+
 
 class THomeServices extends StatelessWidget {
   final List<PopularService> popularServices;
@@ -203,6 +232,7 @@ class THomeServices extends StatelessWidget {
           return THorizontalServices(
             imageUrl: service.imageUrl,
             title: service.title,
+            onTap: service.onTap, // Pass onTap function
           );
         },
       ),
@@ -210,23 +240,30 @@ class THomeServices extends StatelessWidget {
   }
 }
 
+
 class THorizontalServices extends StatelessWidget {
   final String imageUrl;
   final String title;
-  final VoidCallback? onTap;
+  final void Function(BuildContext) onTap; // Change the type of onTap
 
   const THorizontalServices({
-    super.key,
+    Key? key,
     required this.imageUrl,
     required this.title,
-    this.onTap,
-  });
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TVerticalImageText(imageUrl: imageUrl, title: title, onTap: onTap);
+    return TVerticalImageText(
+      imageUrl: imageUrl,
+      title: title,
+      onTap: () => onTap(context), // Pass context to onTap
+    );
   }
 }
+
+
 
 class TVerticalImageText extends StatelessWidget {
   final String imageUrl;
