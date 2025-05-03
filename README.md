@@ -5,13 +5,19 @@ The Law_app Mobile Application is a comprehensive platform designed to facilitat
 ## Getting Started
 
 **Make sure you have:**
+
 -Flutter SDK installed.
+
 -Dart SDK (comes with Flutter).
+
 -IDE (like VS Code, IntelliJ, or Android Studio).
+
 -Android Emulator or a physical device connected (for Android) / Xcode & Simulator (for iOS).
 
 **Set up Flutter**
+
 -flutter doctor - This will check and show missing dependencies or setup issues.
 
 **Run the application**
+
 -flutter run
