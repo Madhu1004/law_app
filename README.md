@@ -1,6 +1,6 @@
 # law_app
 
-A new Flutter project.
+The Legal Consultancy Mobile Application is a comprehensive platform designed to facilitate seamless access to legal expertise and services. Built on Android Studio using Dart programming language, the app integrates Firebase backend to ensure secure authentication, data storage, and efficient communication between users and legal professionals.
 
 ## Getting Started
 
